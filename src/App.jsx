@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Footer from './components/Footer'
 import Login from './components/Login'
 import Body from './components/Body'
 import Profile from './components/Profile'
@@ -14,14 +13,14 @@ function App() {
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body/>}>
-              <Route path="/" element={<Feed/>} />
+              <Route path="/feed" element={<Feed/>} />
               <Route path="login" element={<Login/>} />
               <Route path="profile" element={<Profile/>} />
 
             </Route>
           </Routes>
         </BrowserRouter>
-        <Footer />
+        
       </Provider>
 
     </>
