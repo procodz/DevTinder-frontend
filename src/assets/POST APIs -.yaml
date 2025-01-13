@@ -1,0 +1,20 @@
+POST APIs -
+    signup api - http://localhost:3000/signup
+    Login api -  http://localhost:3000/login
+    Logout api - http://localhost:3000/logout
+    profile-view - http://localhost:3000/profile/view
+    sendconnection - http://localhost:3000/request/send/interested/66fa2e8c534d8b97d21c63bc
+    request-review - http://localhost:3000/request/review/accepted/66fcf0a6f09d375cc7bc2fa2
+
+GET APIs - 
+    feed - http://localhost:3000/feed
+    userConnections - http://localhost:3000/user/connections
+    userRequestsRecieved - http://localhost:3000/user/request/received
+
+DEL APIs - 
+    Delete user - http://localhost:3000/user
+
+PATCH APIs - 
+    user-patch - http://localhost:3000/user/66f65dcf1e80568cdbdc4a10
+    forget-pass - http://localhost:3000/user/66f65dcf1e80568cdbdc4a10
+
