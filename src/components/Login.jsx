@@ -8,8 +8,11 @@ import { BASE_URL } from '../utils/constants';
 function Login() {
   const [emailId, setEmailId] = useState("elon@gmail.com");
   const [password, setPassword] = useState("Elon@1234");
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent form submission
@@ -24,6 +27,7 @@ function Login() {
     dispatch(addUser(res.data));
     navigate("/feed");
     } catch(err) {
+      setError("Invalid credentials");
       console.error(err);
     }
   }
@@ -59,6 +63,7 @@ function Login() {
               />
             </label>
           </div>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center py-4">
             <button type="submit" className="btn btn-primary">Login</button>
           </div>
