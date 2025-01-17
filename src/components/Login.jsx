@@ -24,6 +24,7 @@ function Login() {
       },
       { withCredentials: true }
     );
+    // console.log("Login data:", res);
     dispatch(addUser(res.data));
     navigate("/feed");
     } catch(err) {
