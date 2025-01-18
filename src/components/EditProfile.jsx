@@ -6,8 +6,8 @@ import { addUser } from '../utils/userSlice';
 import UserCard from './UserCard';
 
 const EditProfile = ({user}) => {
-    const loggedInUser = useSelector((store) => store.user);
-    // const [user, setUser] = useState(initialUser);
+    // const loggedInUser = useSelector((store) => store.user)
+  
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
     const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
