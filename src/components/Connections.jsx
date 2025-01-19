@@ -84,17 +84,12 @@ const Connections = () => {
                   <h2 className="card-title text-xl">{connection.firstName + " " + connection.lastName || "Unknown User"}</h2>
                   <p className="text-base-content/70">{connection.about || "No description available"}</p>
                   <div className="card-actions justify-end mt-4">
-                    <button 
-                      className="btn btn-error"
-                      onClick={() => handleReject(connection._id || connection.userId || connection.id)}
-                    >
-                      Reject
-                    </button>
+                  
                     <button 
                       className="btn btn-primary"
                       onClick={() => handleAccept(connection._id || connection.userId || connection.id)}
                     >
-                      Accept
+                      View Profile
                     </button>
                   </div>
                 </div>

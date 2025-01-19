@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/receivedRequest"; // Adjust the import path as needed
+import { addRequest, removeRequest } from "../utils/receivedRequest"; // Adjust the import path as needed
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 
@@ -9,6 +9,21 @@ const PendingRequests = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const reviewRequest = async (status, _id) => {
+    try {
+
+      // Implement your review logic here
+      const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {
+        withCredentials: true
+      });
+      dispatch(removeRequest(_id));
+
+      // After successful review, refresh the requests
+      // await fetchRequests();
+    } catch (error) {
+      console.error("Error reviewing request:", error);
+    }
+  };
 
   const fetchRequests = async () => {
     try {
@@ -35,7 +50,7 @@ const PendingRequests = () => {
       // Implement your accept logic here
       console.log("Accepting request:", requestId);
       // After successful acceptance, refresh the requests
-      await fetchRequests();
+      // await fetchRequests();
     } catch (error) {
       console.error("Error accepting request:", error);
     }
@@ -98,18 +113,18 @@ const PendingRequests = () => {
                   </h2>
                   <p className="text-base-content/70">Status: {request.status}</p>
                   <div className="card-actions justify-end mt-4">
-                    <button 
-                      className="btn btn-error"
-                      onClick={() => handleReject(request._id)}
-                    >
-                      Reject
-                    </button>
-                    <button 
-                      className="btn btn-primary"
-                      onClick={() => handleAccept(request._id)}
-                    >
-                      Accept
-                    </button>
+                        <button 
+                          className="btn btn-error"
+                          onClick={() => reviewRequest("rejected", request._id) || handleReject(request._id)}
+                        >
+                          Reject
+                        </button>
+                        <button 
+                          className="btn btn-primary"
+                          onClick={() => reviewRequest("accepted", request._id) || handleAccept(request._id)}
+                        >
+                          Accept
+                        </button>
                   </div>
                 </div>
               </div>
