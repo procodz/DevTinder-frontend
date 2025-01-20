@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { removeUser } from '../utils/userSlice';
-// import logoutHandler from './Logout';
 
 
 
@@ -33,13 +32,13 @@ const NavBar = () => {
           <Link to = "/feed" className="btn btn-ghost text-xl">DevConnect</Link>
         </div>
         {user &&<div className="flex-none gap-2">
-          <div className='form-control mx-3'>Welcome, {user.firstName}</div>
+          <div className='form-control mx-3'>Welcome, {user[0].firstName}</div>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
                   alt="user photo"
-                  src={user.photoUrl} />
+                  src={user[0].photoUrl} />
               </div>
             </div>
             <ul
