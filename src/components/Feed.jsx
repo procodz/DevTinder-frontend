@@ -26,7 +26,7 @@ function Feed() {
   return (
     feed && Array.isArray(feed) && feed.length > 0 ?(
     <div className="flex justify-center my-10">
-      <UserCard user={feed[2]}/>
+      <UserCard user={feed[0]}/>
     </div>
   ) : (
     <div className="flex justify-center my-10">

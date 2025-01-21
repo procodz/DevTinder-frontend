@@ -1,41 +1,25 @@
-// import React from 'react'
-// import EditProfile from './EditProfile'
-// import { useSelector } from 'react-redux';
-// import UserCard from './UserCard';
-
-// const Profile = () => {
-//   const user = useSelector((store) => store.user);
-//   // console.log("is user array",Array.isArray(user));
-//   return (
-//     user &&(
-//     <EditProfile user = {user.user} />
-//   )
-  
-//   )
-// };
-
-
 import React, { useState } from 'react';
 import EditProfile from './EditProfile';
 import { useSelector } from 'react-redux';
 import UserCard from './UserCard';
 
 const Profile = () => {
-  const user = useSelector((store) => store.user);
-  // Initialize localUser state only when user data is available
-  const [localUser, setLocalUser] = useState(user ? user[0] : {});
+  const userState = useSelector((store) => store.user);
+  // Extract user data from the nested structure
+  const user = userState?.user?.user || userState;
+  const [localUser, setLocalUser] = useState(user || {});
 
   // Function to handle form changes
   const handleFormChange = (updatedUser) => {
     setLocalUser(updatedUser);
   };
 
-  // Only render if user exists and has data
+  // Only render if user exists
   return (
-    user && user.length > 0 && (
+    user && (
       <div className="flex justify-around items-start">
         <EditProfile 
-          user={user[0]} 
+          user={user} 
           onFormChange={handleFormChange}
         />
         <div className="mt-10">

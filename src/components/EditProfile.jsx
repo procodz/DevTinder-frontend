@@ -34,20 +34,30 @@ const EditProfile = ({ user, onFormChange }) => {
         {firstName, lastName, photoUrl, age, gender, about}, 
         {withCredentials: true}
       );
-      dispatch(addUser([res?.data?.data]));
-      onFormChange(res?.data?.data);
+      
+      // Update the Redux store with the response data
+      dispatch(addUser(res.data));
+      
+      // Update the local form state
+      onFormChange(res.data.data);
     } catch (err) {
       setError(err.message);
-      console.log(err);
+      console.error(err);
     }
   };
 
   return (
     <div className="flex justify-center my-10">
       <div className="card bg-base-300 w-96 shadow-xl">
-        <form className="card-body">
+        <form onSubmit={saveProfile} className="card-body">
           <h2 className="card-title flex justify-center">Edit Profile</h2>
           
+          {error && (
+            <div className="alert alert-error">
+              <span>{error}</span>
+            </div>
+          )}
+
           {/* First Name */}
           <div>
             <label className="form-control w-full max-w-xs py-3">
@@ -100,10 +110,10 @@ const EditProfile = ({ user, onFormChange }) => {
                 <span className="label-text">Age</span>
               </div>
               <input 
-                type="text"  
+                type="number" 
                 value={age}
-                className="input input-bordered w-full max-w-xs" 
-                onChange={(e) => setAge(e.target.value)}     
+                className="input input-bordered w-full max-w-xs"
+                onChange={(e) => setAge(e.target.value)}
               />
             </label>
           </div>
@@ -114,12 +124,16 @@ const EditProfile = ({ user, onFormChange }) => {
               <div className="label">
                 <span className="label-text">Gender</span>
               </div>
-              <input 
-                type="text"
-                value={gender}  
-                className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setGender(e.target.value)}  
-              />
+              <select 
+                className="select select-bordered w-full max-w-xs"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
             </label>
           </div>
 
@@ -129,20 +143,16 @@ const EditProfile = ({ user, onFormChange }) => {
               <div className="label">
                 <span className="label-text">About</span>
               </div>
-              <input 
-                type="text" 
-                value={about} 
-                className="input input-bordered w-full max-w-xs"  
+              <textarea 
+                className="textarea textarea-bordered h-24"
+                value={about}
                 onChange={(e) => setAbout(e.target.value)}
               />
             </label>
           </div>
 
-          <p className="text-red-500">{error}</p>
-          <div className="card-actions justify-center py-4">
-            <button type="submit" className="btn btn-primary" onClick={saveProfile}>
-              Save Profile
-            </button>
+          <div className="card-actions justify-center mt-4">
+            <button type="submit" className="btn btn-primary">Save Changes</button>
           </div>
         </form>
       </div>
