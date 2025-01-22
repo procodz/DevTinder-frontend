@@ -67,6 +67,23 @@ const NavBar = () => {
       {userData && (
         <div className="flex-none gap-2">
           <div className='form-control mx-3'>Welcome, {userData.firstName}</div>
+          
+          {/* Projects Dropdown */}
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost">
+              Projects
+            </div>
+            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-300 rounded-box w-52">
+              <li>
+                <Link to="/projects">My Projects</Link>
+              </li>
+              <li>
+                <Link to="/projects/new">Create Project</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* User Profile Dropdown */}
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">

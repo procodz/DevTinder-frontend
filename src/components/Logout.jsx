@@ -15,9 +15,14 @@ const logoutHandler = () => {
         { withCredentials: true }
       );
       dispatch(removeUser());
+      localStorage.removeItem('user');
       navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
+      // Still clear local data even if the API call fails
+      dispatch(removeUser());
+      localStorage.removeItem('user');
+      navigate('/login');
     }
   };
 

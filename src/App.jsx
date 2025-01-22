@@ -8,6 +8,10 @@ import Feed from './components/Feed'
 import Logout from './components/Logout'
 import Connections from './components/Connections'
 import Requests from './components/Requests'
+import ProjectList from './components/projects/ProjectList'
+import ProjectDetail from './components/projects/ProjectDetail'
+import CreateProject from './components/projects/CreateProject'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -22,14 +26,13 @@ function App() {
               <Route path="profile" element={<Profile/>} />
               <Route path="/user/connections" element={<Connections/>} />
               <Route path="/user/request/received" element={<Requests/>} />
-
-
+              <Route path="/projects" element={<ProtectedRoute><ProjectList/></ProtectedRoute>} />
+              <Route path="/projects/new" element={<ProtectedRoute><CreateProject/></ProtectedRoute>} />
+              <Route path="/projects/:id" element={<ProtectedRoute><ProjectDetail/></ProtectedRoute>} />
             </Route>
           </Routes>
         </BrowserRouter>
-        
       </Provider>
-
     </>
   )
 }

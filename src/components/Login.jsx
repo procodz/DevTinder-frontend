@@ -39,6 +39,7 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
+      localStorage.setItem('user', JSON.stringify(res.data.data || res.data));
       navigate("/feed");
     } catch(err) {
       setError("Invalid credentials");
