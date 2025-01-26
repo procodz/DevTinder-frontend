@@ -44,39 +44,39 @@ const CreateProject = () => {
       <h1 className="text-3xl font-bold mb-6">Create New Project</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Title
           </label>
           <input
             type="text"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Description
           </label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
             rows="4"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Visibility
           </label>
           <select
             value={formData.visibility}
             onChange={(e) => setFormData({ ...formData, visibility: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
           >
             <option value="public">Public</option>
             <option value="private">Private</option>
@@ -84,13 +84,13 @@ const CreateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Status
           </label>
           <select
             value={formData.status}
             onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
           >
             <option value="planning">Planning</option>
             <option value="in-progress">In Progress</option>
@@ -99,40 +99,40 @@ const CreateProject = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Tech Stack (comma-separated)
           </label>
           <input
             type="text"
             value={formData.techStack.join(', ')}
             onChange={handleTechStackChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
             placeholder="React, Node.js, MongoDB"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             GitHub Link
           </label>
           <input
             type="url"
             value={formData.githubLink}
             onChange={(e) => setFormData({ ...formData, githubLink: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
             placeholder="https://github.com/username/repo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             End Date
           </label>
           <input
             type="date"
             value={formData.endDate}
             onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-base-100"
           />
         </div>
 
