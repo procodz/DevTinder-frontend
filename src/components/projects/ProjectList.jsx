@@ -51,12 +51,12 @@ const ProjectList = () => {
           >
             <Link to={`/projects/${project._id}`}>
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-600 mb-2">{project.description}</p>
+              <p className="text-gray-250 mb-2">{project.description}</p>
               <div className="flex justify-between items-center">
                 <span className={`px-2 py-1 rounded text-sm ${
                   project.status === 'completed' ? 'bg-green-100 text-green-800' :
                   project.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-gray-100 text-gray-800'
+                  'bg-red-100 text-red-800'
                 }`}>
                   {project.status}
                 </span>

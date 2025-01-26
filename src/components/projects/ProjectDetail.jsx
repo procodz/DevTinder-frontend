@@ -79,30 +79,30 @@ const ProjectDetail = () => {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center">Loading...</div>;
+    return <div className="flex justify-center items-center text-neutral">Loading...</div>;
   }
 
   if (!project) {
-    return <div className="p-4">Project not found</div>;
+    return <div className="p-4 text-neutral">Project not found</div>;
   }
 
   return (
     <div className="p-4">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">{project.title}</h1>
-        <p className="text-gray-600 mb-4">{project.description}</p>
+        <h1 className="text-5xl font-bold mb-2 text-base">{project.title}</h1>
+        <p className="text-neutral mb-4 text-white">{project.description}</p>
         <div className="flex space-x-4 mb-4">
-          <span className="text-sm bg-gray-100 px-2 py-1 rounded">
+          <span className="text-sm bg-red-100 text-red-800 px-2 py-1 rounded text-neutral">
             Status: {project.status}
           </span>
-          <span className="text-sm bg-gray-100 px-2 py-1 rounded">
+          <span className="text-sm bg-red-500 px-2 py-1 rounded text-neutral">
             Visibility: {project.visibility}
           </span>
         </div>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Tasks</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-base">Tasks</h2>
         <form onSubmit={handleAddTask} className="mb-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
@@ -110,7 +110,7 @@ const ProjectDetail = () => {
               placeholder="Task title"
               value={newTask.title}
               onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-              className="border rounded px-3 py-2"
+              className="border rounded px-3 py-2 bg-base-200 text-base placeholder:text-neutral"
               required
             />
             <input
@@ -118,16 +118,16 @@ const ProjectDetail = () => {
               placeholder="Description"
               value={newTask.description}
               onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
-              className="border rounded px-3 py-2"
+              className="border rounded px-3 py-2 bg-base-200 text-base placeholder:text-neutral"
             />
             <select
               value={newTask.assignedTo}
               onChange={(e) => setNewTask({ ...newTask, assignedTo: e.target.value })}
-              className="border rounded px-3 py-2"
+              className="border rounded px-3 py-2 bg-base-200 text-base"
             >
-              <option value="">Assign to...</option>
+              <option value="" className="text-neutral">Assign to...</option>
               {collaborators.map((collaborator) => (
-                <option key={collaborator._id} value={collaborator._id}>
+                <option key={collaborator._id} value={collaborator._id} className="text-base">
                   {collaborator.firstName} {collaborator.lastName}
                 </option>
               ))}
@@ -136,11 +136,11 @@ const ProjectDetail = () => {
               type="date"
               value={newTask.dueDate}
               onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
-              className="border rounded px-3 py-2"
+              className="border rounded px-3 py-2 bg-base-200 text-base"
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-primary text-primary-content px-4 py-2 rounded hover:bg-primary-focus"
             >
               Add Task
             </button>
@@ -149,18 +149,18 @@ const ProjectDetail = () => {
 
         <div className="space-y-4">
           {project.tasks.map((task) => (
-            <div key={task._id} className="border rounded-lg p-4">
+            <div key={task._id} className="border rounded-lg p-4 bg-base-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="font-semibold">{task.title}</h3>
-                  <p className="text-gray-600">{task.description}</p>
+                  <h3 className="font-semibold text-base">{task.title}</h3>
+                  <p className="text-neutral">{task.description}</p>
                   {task.assignedTo && (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-neutral">
                       Assigned to: {task.assignedTo.firstName} {task.assignedTo.lastName}
                     </p>
                   )}
                   {task.dueDate && (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-neutral">
                       Due: {new Date(task.dueDate).toLocaleDateString()}
                     </p>
                   )}
@@ -168,11 +168,11 @@ const ProjectDetail = () => {
                 <select
                   value={task.status}
                   onChange={(e) => handleTaskStatusChange(task._id, e.target.value)}
-                  className="border rounded px-2 py-1"
+                  className="border rounded px-2 py-1 bg-base-200 text-base"
                 >
-                  <option value="pending">Pending</option>
-                  <option value="in-progress">In Progress</option>
-                  <option value="completed">Completed</option>
+                  <option value="pending" className="text-base">Pending</option>
+                  <option value="in-progress" className="text-base">In Progress</option>
+                  <option value="completed" className="text-base">Completed</option>
                 </select>
               </div>
             </div>
